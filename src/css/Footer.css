@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=Asimovian&family=Bangers&display=swap");
+
+#footer-cyber {
+    margin-top: 80px;
+    padding: 0 60px 30px 60px;
+}
+
+.footer-line {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #ff007f, transparent);
+    margin-bottom: 25px;
+    box-shadow: 0 0 15px rgba(255, 0, 127, 0.5);
+}
+
+.footer-content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.footer-brand {
+    font-family: 'Asimovian', sans-serif;
+    color: #ff007f;
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+    text-shadow: 0 0 10px rgba(255, 0, 127, 0.6);
+    margin: 0;
+}
+
+.footer-brand span {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.8rem;
+}
+
+.footer-info {
+    font-family: 'Asimovian', sans-serif;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+.footer-copy {
+    font-family: 'Asimovian', sans-serif;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 0.75rem;
+    margin: 0;
+}

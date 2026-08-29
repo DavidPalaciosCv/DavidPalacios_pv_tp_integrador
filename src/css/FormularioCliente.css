@@ -1,0 +1,158 @@
+@import url("https://fonts.googleapis.com/css2?family=Asimovian&family=Bangers&display=swap");
+
+.MuiPaper-root {
+  background-color: #feb9d9 !important ;
+  padding: 25px 30px !important;
+  border-radius: 20px !important;
+  box-shadow: 0 4px 20px rgb(237, 129, 241) !important;
+  max-width: 700px !important;
+  margin: 30px auto !important;
+}
+
+.MuiPaper-root h5,
+.MuiTypography-h5 {
+  font-family: "Asimovian", sans-serif !important;
+  color: #1b1b1b !important;
+  text-transform: uppercase !important;
+  text-align: center !important;
+}
+
+.MuiTextField-root .MuiInputBase-root {
+  background-color: #fbd6e8 !important;
+  border-radius: 20px !important;
+  font-family: "Asimovian", sans-serif !important;
+  color: #1b1b1b !important;
+}
+
+.MuiInputBase-root:hover {
+  background-color: #f89fca !important;
+}
+
+.MuiInputBase-root.Mui-focused {
+  background-color: #fb7ebb !important;
+}
+
+.MuiTextField-root input {
+  color: #1b1b1b !important;
+  font-family: system-ui, sans-serif !important;
+}
+
+.MuiTextField-root .MuiInputLabel-root {
+  color: #1b1b1b !important;
+  font-family: "Asimovian", sans-serif !important;
+}
+
+.MuiTextField-root .MuiInputLabel-root.Mui-focused {
+  color: #d00066 !important;
+}
+
+.MuiTextField-root .MuiOutlinedInput-root fieldset {
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+.MuiTextField-root .MuiOutlinedInput-root:hover fieldset {
+  border-color: #ff007f !important;
+}
+
+.MuiTextField-root .MuiOutlinedInput-root.Mui-focused fieldset {
+  border-color: #d00066 !important;
+  border-width: 2px !important;
+}
+
+.MuiPaper-root .MuiButton-contained {
+  background-color: #fa0577 !important;
+  color: white !important;
+  font-family: "Asimovian", sans-serif !important;
+  border-radius: 30px !important;
+  padding: 12px 0 !important;
+  margin-top: 15px !important;
+  min-width: 140px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 10px rgba(208, 0, 102, 0.2) !important;
+  transition: background-color 0.2s ease !important;
+}
+
+.MuiPaper-root .MuiButton-contained:hover {
+  background-color: #f565a8 !important;
+  transform: scale(1.05);
+}
+
+
+.toggle-avanzado-container {
+  display: flex;
+  justify-content: center;
+  margin: 18px 0 8px;
+}
+
+.toggle-avanzado-btn {
+  background: transparent;
+  border: 2px dashed #d00066;
+  color: #d00066;
+  font-family: "Asimovian", sans-serif;
+  font-size: 0.85rem;
+  padding: 8px 22px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.toggle-avanzado-btn:hover {
+  background-color: rgba(208, 0, 102, 0.1);
+  border-color: #fa0577;
+  color: #fa0577;
+}
+
+.toggle-avanzado-btn.activo {
+  background-color: rgba(208, 0, 102, 0.15);
+  border-style: solid;
+  color: #fa0577;
+}
+
+
+.campos-avanzados {
+  animation: slideDown 0.35s ease-out;
+  overflow: hidden;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    max-height: 800px;
+    transform: translateY(0);
+  }
+}
+
+.seccion-titulo {
+  color: #d00066 !important;
+  font-family: "Asimovian", sans-serif !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  margin-top: 18px !important;
+  margin-bottom: 4px !important;
+  padding-bottom: 4px;
+  border-bottom: 1px dashed rgba(208, 0, 102, 0.3);
+  font-size: 0.8rem !important;
+}
+
+.campos-fila {
+  display: flex;
+  gap: 16px;
+}
+
+.campos-fila > * {
+  flex: 1;
+}
+
+@media (max-width: 500px) {
+  .campos-fila {
+    flex-direction: column;
+    gap: 0;
+  }
+}

@@ -1,0 +1,158 @@
+@import url("https://fonts.googleapis.com/css2?family=Asimovian&family=Bangers&display=swap");
+
+#dashboard-container {
+    padding: 40px 60px;
+    min-height: 80vh;
+}
+
+#dashboard-hero {
+    text-align: center;
+    margin-bottom: 60px;
+    padding: 50px 20px;
+    background: rgba(255, 0, 127, 0.04);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 0, 127, 0.15);
+}
+
+.dash-label {
+    font-family: 'Asimovian', sans-serif;
+    color: #ff007f;
+    font-size: 0.85rem;
+    letter-spacing: 5px;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px rgba(255, 0, 127, 0.6);
+}
+
+#titulo {
+    font-family: 'Asimovian', sans-serif;
+    font-size: 3rem;
+    color: white;
+    margin: 0 0 15px 0;
+}
+
+.dash-name {
+    color: #ff007f;
+    text-shadow: 0 0 20px rgba(255, 0, 127, 0.8);
+}
+
+.dash-sub {
+    font-family: 'Asimovian', sans-serif;
+    color: rgba(255,255,255,0.6);
+    font-size: 1rem;
+}
+
+.dash-sector {
+    font-weight: bold;
+    padding: 3px 12px;
+    border-radius: 10px;
+}
+
+.sector-soporte {
+    color: #00e676;
+    border: 1px solid #00e676;
+    background: rgba(0, 230, 118, 0.1);
+}
+
+.sector-gerencia {
+    color: #b388ff;
+    border: 1px solid #b388ff;
+    background: rgba(179, 136, 255, 0.1);
+}
+
+
+.dash-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.dash-card {
+    background: rgba(25, 15, 35, 0.8);
+    border: 1px solid rgba(255, 0, 127, 0.25);
+    border-radius: 20px;
+    padding: 35px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: all 0.3s ease;
+}
+
+.dash-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 0, 127, 0.6);
+    box-shadow: 0 10px 40px rgba(255, 0, 127, 0.2);
+}
+
+.dash-card--alt {
+    border-color: rgba(0, 230, 118, 0.25);
+}
+
+.dash-card--alt:hover {
+    border-color: rgba(0, 230, 118, 0.6);
+    box-shadow: 0 10px 40px rgba(0, 230, 118, 0.15);
+}
+
+.dash-card-icon {
+    font-size: 2.2rem;
+}
+
+.dash-card h3 {
+    font-family: 'Asimovian', sans-serif;
+    color: white;
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.dash-card p {
+    color: rgba(255,255,255,0.6);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    flex-grow: 1;
+}
+
+.dash-card-btn {
+    background: linear-gradient(135deg, #ff007f, #d4006a);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-family: 'Asimovian', sans-serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: fit-content;
+    margin-top: auto;
+}
+
+.dash-card-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(255, 0, 127, 0.5);
+}
+
+.dash-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Asimovian', sans-serif;
+    color: #ff007f;
+    font-size: 0.9rem;
+}
+
+.status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ff007f;
+    box-shadow: 0 0 8px rgba(255, 0, 127, 0.8);
+    animation: pulse 1.5s infinite;
+}
+
+.status-dot--green {
+    background: #00e676;
+    box-shadow: 0 0 8px rgba(0, 230, 118, 0.8);
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}

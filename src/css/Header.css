@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css2?family=Asimovian&family=Bangers&display=swap");
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.header-info-cyber {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background-color: rgba(25, 25, 40, 0.6);
+    padding: 8px 20px;
+    border-radius: 20px;
+    border: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+.header-user {
+    font-family: 'Asimovian', sans-serif;
+    color: #ffffff;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.header-label {
+    color: #ff007f;
+    font-size: 0.95rem;
+    margin-right: 6px;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(255, 0, 127, 0.8);
+    letter-spacing: 2px;
+}
+
+.header-badge {
+    font-family: 'Asimovian', sans-serif;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.badge-soporte {
+    background-color: rgba(0, 230, 118, 0.15);
+    color: #00e676;
+    border: 1px solid #00e676;
+    box-shadow: 0 0 10px rgba(0, 230, 118, 0.3);
+}
+
+.badge-gerencia {
+    background-color: rgba(179, 136, 255, 0.15);
+    color: #b388ff;
+    border: 1px solid #b388ff;
+    box-shadow: 0 0 10px rgba(179, 136, 255, 0.3);
+}
+
+#btncerrar {
+    box-shadow: 0 0 0 4px #1b1b1b, 0 0 0 8px #FA0D05;
+    border-radius: 30px;
+    font-family: 'Asimovian', sans-serif;
+    color:white;
+    margin-left: 30px;
+}
+
+#btncerrar:hover {
+    box-shadow: 0 0 0 4px #1b1b1b, 0 0 0 8px #FA0D05, 0 0 35px #FA0D05;
+    transform: scale(1.1);
+}
