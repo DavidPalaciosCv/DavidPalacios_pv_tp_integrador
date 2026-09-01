@@ -103,15 +103,24 @@ const DetalleCliente = () => {
                     </Box>
 
                     {admin?.sector === 'Gerencia' ? (
-                        <Button 
-                            variant="contained" 
-                            color="error" 
-                            disabled={eliminando} 
-                            onClick={handleEliminarCliente}
-                            sx={{ textTransform: 'none', fontWeight: 'bold' }}
-                        >
-                            {eliminando ? 'Eliminando' : 'Eliminar Cliente'}
-                        </Button>
+                        <Box display="flex" gap={2}>
+                            <Button
+                                variant='contained'
+                                onClick={() => navigate(`/clientes/${id}/editar`)}
+                                sx={{ textTransform: 'none', fontWeight: 'bold' }}
+                            >
+                                Modificar
+                            </Button>
+                                <Button 
+                                variant="contained" 
+                                color="error" 
+                                disabled={eliminando} 
+                                onClick={handleEliminarCliente}
+                                sx={{ textTransform: 'none', fontWeight: 'bold' }}
+                            >
+                                {eliminando ? 'Eliminando' : 'Eliminar Cliente'}
+                            </Button>
+                        </Box>
                     ) : (
                         <Typography variant="caption" sx={{ p: 1, bgcolor: 'rgba(255,255,255,0.05)', borderRadius: 1 }}>
                             Sector: {admin?.sector} (Solo Lectura)

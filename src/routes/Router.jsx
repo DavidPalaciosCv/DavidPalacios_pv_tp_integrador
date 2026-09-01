@@ -5,6 +5,7 @@ import Dashboard from '../views/Dashboard.jsx';
 import DetalleCliente from '../views/DetalleCliente.jsx'
 import Clientes from '../views/ListaClientes.jsx';
 import Notfound from '../views/Notfound.jsx';
+import EditarCliente from '../views/EditarCliente.jsx';
 import App from '../App.jsx';
 
 const router = createBrowserRouter([
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
             {
                 path: 'clientes/:id',
                 element: <RutaProtegida><DetalleCliente /></RutaProtegida>
+            },
+            {
+                path: 'clientes/:id/editar',
+                element: <RutaProtegida><EditarCliente /></RutaProtegida>
             },
             {
                 path: '*',

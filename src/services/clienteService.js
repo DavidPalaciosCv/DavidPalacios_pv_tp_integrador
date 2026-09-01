@@ -107,3 +107,40 @@ export const getSmallestAvailableId = (clientes) => {
 
     return id;
 };
+
+export const modificarCliente = async (id, newdat) => {
+    try{
+        const {data} = await axios.puy(
+            '${URL}/${id}',
+            newdat
+        );
+        console.log(
+            "PUT /users/" + id  + " - Respuesta API: ",
+            data
+        );
+
+    }catch(err){
+        console.warn(
+            "PUT a la API falló, se modiifca solo en LocalStorage: ",
+            err.message
+        );
+    }
+
+    const clientes = getLS();
+
+    const actualizados = clientes.map(cliente => Number(cliente.id) == Number(id) 
+        ?{
+        ...cliente,
+        ...newdat,
+        id: cliente.id,
+        visible: true
+        }
+        : cliente
+    );
+
+    saveLS(actualizados);
+
+    return actualizados.find(
+        cliente => Number(cliente.id) === Number(id)
+    );
+};

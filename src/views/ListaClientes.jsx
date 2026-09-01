@@ -5,7 +5,8 @@ import '../css/ListaClientes.css';
 import { getClientes, agregarCliente } from "../services/clienteService";
 import {
     Table, TableHead, TableBody, TableRow, TableCell,
-    CircularProgress, Alert
+    CircularProgress, Alert,
+    Button
 } from '@mui/material';
 
 const Clientes = () => {
@@ -16,6 +17,7 @@ const Clientes = () => {
     const [error, setError] = useState(null);
     const [busqueda, setBusqueda] = useState("");
     const [filtro, setFiltro] = useState("todos");
+    const [mostrarGestion, setMostrarGestion] = useState(false);
 
    useEffect(() => {
 
@@ -50,130 +52,132 @@ const Clientes = () => {
         <div id="formulario">
             <h1>Ahora estas en Clientes</h1>
             
-            <FormularioCliente
-            onAddCliente={async (nuevo)=>{
-
-            await agregarCliente(nuevo);
-
-            const lista = await getClientes();
-
-            lista.sort((a,b)=>a.id-b.id);
-
-            setClientes(lista);
-            }}
-            ></FormularioCliente>
-
-
-           <div className="buscador-container">
-
-    <input
-        type="text"
-        placeholder="Buscar..."
-        value={busqueda}
-        onChange={(e) => setBusqueda(e.target.value)}
-        className="input-busqueda"
-    />
-
-    <select
-        value={filtro}
-        onChange={(e) => setFiltro(e.target.value)}
-        className="select-filtro"
-    >
-        <option value="todos">Todos</option>
-        <option value="nombre">Nombre</option>
-        <option value="apellido">Apellido</option>
-        <option value="email">Email</option>
-        <option value="ciudad">Ciudad</option>
-        <option value="id">ID</option>
-    </select>
-
-</div>
-
-
-            
-            <div className="tabla-clientes-container">
-                <h2 className="tabla-titulo">Clientes Registrados</h2>
-                
-                {cargando ? (
-                    <div style={{ display: 'flex', justifyContent: 'center', padding: '30px' }}>
-                        <CircularProgress sx={{ color: '#00e676' }} />
-                    </div>
-                ) : error ? (
-                    <Alert severity="error" sx={{ mb: 2 }}>{error}</Alert>
-                ) : (
-                    <Table className="tabla-cyber">
-                        <TableHead>
-                            <TableRow>
-                                <TableCell>ID</TableCell>
-                                <TableCell>Nombre</TableCell>
-                                <TableCell>Email</TableCell>
-                                <TableCell style={{ textAlign: 'center' }}>Acciones</TableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            {clientes
-                            .filter(cliente => {
-                            const texto = busqueda.toLowerCase();
-
-                            switch (filtro) {
-
-                                case "nombre":
-                                    return cliente.name.firstname
-                                        ?.toLowerCase()
-                                        .includes(texto);
-
-                                case "apellido":
-                                    return cliente.name.lastname
-                                        ?.toLowerCase()
-                                        .includes(texto);
-
-                                case "email":
-                                    return cliente.email
-                                        ?.toLowerCase()
-                                        .includes(texto);
-
-                                case "ciudad":
-                                    return cliente.address?.city
-                                        ?.toLowerCase()
-                                        .includes(texto);
-
-                                case "id":
-                                    return cliente.id
-                                        .toString()
-                                        .includes(texto);
-
-                                default:
-                                    return (
-                                        cliente.name.firstname?.toLowerCase().includes(texto) ||
-                                        cliente.name.lastname?.toLowerCase().includes(texto) ||
-                                        cliente.email?.toLowerCase().includes(texto) ||
-                                        cliente.address?.city?.toLowerCase().includes(texto) ||
-                                        cliente.id.toString().includes(texto)
-                                    );
-                            }
-
-                        })
-                            .sort((a,b)=>a.id-b.id)
-                            .map((cliente) => (
-                                <TableRow key={cliente.id}>
-                                    <TableCell>#{cliente.id}</TableCell>
-                                    <TableCell className="nombre-cliente">
-                                        {cliente.name?.firstname} {cliente.name?.lastname}
-                                    </TableCell>
-                                    <TableCell>{cliente.email}</TableCell>
-                                    <TableCell style={{ textAlign: 'center' }}>
-                                        <button 
-                                            onClick={() => navigate(`/clientes/${cliente.id}`)} 
-                                            className="boton-cyber-ficha"
-                                        >
-                                            Ver Ficha →
-                                        </button>
-                                    </TableCell>
-                                </TableRow>
-                            ))}
-                        </TableBody>
-                    </Table>
+            <div className='clientes-layout'>                
+                {!mostrarGestion && (
+                    <Button onClick={() => setMostrarGestion(true)} className="boton-cyber-ficha">+ Nuevo Cliente / Buscar</Button>
                 )}
+
+                {mostrarGestion && (
+                    <>
+                        <Button onClick={() => setMostrarGestion(false)} className='boton-cyber-ficha'>Volver a la Lista</Button>
+
+                        <div className='formulario-container'>
+                            <input
+                                type="text"
+                                placeholder="Buscar..."
+                                value={busqueda}
+                                onChange={(e) => setBusqueda(e.target.value)}
+                                className="input-busqueda"
+                            />
+                            <select
+                                value={filtro}
+                                onChange={(e) => setFiltro(e.target.value)}
+                                className="select-filtro"
+                            >
+                                <option value="todos">Todos</option>
+                                <option value="nombre">Nombre</option>
+                                <option value="apellido">Apellido</option>
+                                <option value="email">Email</option>
+                                <option value="ciudad">Ciudad</option>
+                                <option value="id">ID</option>
+                            </select>
+
+                            <FormularioCliente
+                                onAddCliente={async (nuevo)=>{
+                                await agregarCliente(nuevo);
+                                const lista = await getClientes();
+                                lista.sort((a,b)=>a.id-b.id);
+                                setClientes(lista);
+                                }}
+                            />
+                        </div>
+                    </>
+                )}
+
+                <div className="tabla-clientes-container">
+                    <h2 className="tabla-titulo">Clientes Registrados</h2>
+                    
+                    {cargando ? (
+                        <div style={{ display: 'flex', justifyContent: 'center', padding: '30px' }}>
+                            <CircularProgress sx={{ color: '#00e676' }} />
+                        </div>
+                    ) : error ? (
+                        <Alert severity="error" sx={{ mb: 2 }}>{error}</Alert>
+                    ) : (
+                        <Table className="tabla-cyber">
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell>ID</TableCell>
+                                    <TableCell>Nombre</TableCell>
+                                    <TableCell>Email</TableCell>
+                                    <TableCell style={{ textAlign: 'center' }}>Acciones</TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {clientes
+                                .filter(cliente => {
+                                const texto = busqueda.toLowerCase();
+
+                                switch (filtro) {
+
+                                    case "nombre":
+                                        return cliente.name.firstname
+                                            ?.toLowerCase()
+                                            .includes(texto);
+
+                                    case "apellido":
+                                        return cliente.name.lastname
+                                            ?.toLowerCase()
+                                            .includes(texto);
+
+                                    case "email":
+                                        return cliente.email
+                                            ?.toLowerCase()
+                                            .includes(texto);
+
+                                    case "ciudad":
+                                        return cliente.address?.city
+                                            ?.toLowerCase()
+                                            .includes(texto);
+
+                                    case "id":
+                                        return cliente.id
+                                            .toString()
+                                            .includes(texto);
+
+                                    default:
+                                        return (
+                                            cliente.name.firstname?.toLowerCase().includes(texto) ||
+                                            cliente.name.lastname?.toLowerCase().includes(texto) ||
+                                            cliente.email?.toLowerCase().includes(texto) ||
+                                            cliente.address?.city?.toLowerCase().includes(texto) ||
+                                            cliente.id.toString().includes(texto)
+                                        );
+                                }
+
+                            })
+                                .sort((a,b)=>a.id-b.id)
+                                .map((cliente) => (
+                                    <TableRow key={cliente.id}>
+                                        <TableCell>#{cliente.id}</TableCell>
+                                        <TableCell className="nombre-cliente">
+                                            {cliente.name?.firstname} {cliente.name?.lastname}
+                                        </TableCell>
+                                        <TableCell>{cliente.email}</TableCell>
+                                        <TableCell style={{ textAlign: 'center' }}>
+                                            <button 
+                                                onClick={() => navigate(`/clientes/${cliente.id}`)} 
+                                                className="boton-cyber-ficha"
+                                            >
+                                                Ver Ficha →
+                                            </button>
+                                        </TableCell>
+                                    </TableRow>
+                                ))}
+                            </TableBody>
+                        </Table>
+                    )}
+                </div>
             </div>
         </div>
     );
